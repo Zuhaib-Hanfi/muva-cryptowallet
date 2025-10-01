@@ -1,10 +1,10 @@
-// import { useWallet } from './context/WalletContext.jsx';
-// import Login from './components/Login.jsx';
+import { useWallet } from './context/WalletContext.jsx';
+import Login from './components/Login.jsx';
 // import WalletDashboard from './components/WalletDashboard.jsx';
 
 
 function App() {
-  // const {wallet, loding}=useWallet();
+  const {wallet, loading}=useWallet();
 
   const LoadingSpinner = () => {
     <div className="flex justify-center items-center min-h-screen">
@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <div className="container mx-auto p-4 md:p-8">
-        {Loading ? <LoadingSpinner /> : wallet ? <WalletDashboard /> : <Login />}
+        {loading ? <LoadingSpinner /> : wallet ? <WalletDashboard /> : <Login />}
       </div>
     </div>
   )
