@@ -32,7 +32,7 @@ function login() {
                 <h2 className="text-2xl font-bold text-center mb-4">Save your Seed Phrase</h2>
                 <div className="bg-red-200 border-l-4 border-red-400 backdrop-blur-3xl text-red-900 p-4 rounded-b-2xl mb-6">
                     <p className="font-extrabold">!!IMPORTANT!!</p>
-                    <P>Save this 12-word Seed Phrase somewhere safe and don't share it with anyone.</P>
+                    <p>Save this 12-word Seed Phrase somewhere safe and don't share it with anyone.</p>
                 </div>
                 <div className="bg-gray-400 p-4 rounded-2xl text-center font-mono text-lg tracking-wider my-4">
                     {newMnemonic}

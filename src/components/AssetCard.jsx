@@ -29,55 +29,89 @@ function AssetCard({ coin, balance, onTransactionSuccess }) {
                 setMessage(`Success! Tx: ${txHash.substring(0, 10)}...`);
                 resetFormAndRefresh();
             }
-            else if(coin.symbol==='SOL'){
-                const signature =await blockchain.sendSol(coin.privateKey,recipient,parseFloat(amount));
+            else if (coin.symbol === 'SOL') {
+                const signature = await blockchain.sendSol(coin.privateKey, recipient, parseFloat(amount));
                 setMessage(`Transaction sent! Confirming...`);
                 await pollForSolanaConfirmation(signature);
             }
         }
-        catch(err){
+        catch (err) {
             setError(`Error: ${err.message}`);
             setSending(false);
         }
     };
 
-    const pollForSolanaCOnfirmation=async (signature)=>{
-        const solscanLink=`https://solscan.io/tx/${signature}`;
-        const connection=new Connection(blockchain.SOL_RPC_URL);
-        let confirmed=false;
+    const pollForSolanaCOnfirmation = async (signature) => {
+        const solscanLink = `https://solscan.io/tx/${signature}`;
+        const connection = new Connection(blockchain.SOL_RPC_URL);
+        let confirmed = false;
 
-        for(let i=0;i<30;i++){
-            const status =await connection.getSignatureStatus(signature,{searchTransactionHistory:true});
-            if(status && status.value && (status.value.confirmationStatus === 'confirmed' || status.value.confirmationStatus ==='finalized')){
+        for (let i = 0; i < 30; i++) {
+            const status = await connection.getSignatureStatus(signature, { searchTransactionHistory: true });
+            if (status && status.value && (status.value.confirmationStatus === 'confirmed' || status.value.confirmationStatus === 'finalized')) {
                 setMessage(<span>Success! <a href={solscanLink} traget="_blank" rel="noopener noreferrer" className="link link-primary">View on Solscan</a></span>);
-                confirmed=true;
+                confirmed = true;
                 resetFormAndRefresh();
                 break;
             }
             await sleep(2000);
         }
-        if(!confirmed){
+        if (!confirmed) {
             setError(<span>Confirmation timed out. <a href={solscanLink} target="_black" rel="noopener noreferrer" className="link link-error">Check Solscan</a></span>);
             setSending(false);
         }
     };
 
-    const resetFormAndRefresh =()=>{
+    const resetFormAndRefresh = () => {
         setRecipient('');
         setAmount('');
         setSending(false);
-        if(onTransactionSuccess) onTransactionSuccess();
+        if (onTransactionSuccess) onTransactionSuccess();
     }
 
-    const copyToClipboard=(text)=>{
+    const copyToClipboard = (text) => {
         navigatior.clipboard.writeText(text);
         alert('Address Copied!!');
     }
 
 
-    return(
-        <div>
-            
-        </div>
-    )
+    return (
+        <div className="card w-full bg-gray-300 shadow-2xl shadow-amber-300">
+            <div className="card-body">
+                <h2 className="card-title">{coin.name} ({coin.symbol})</h2>
+                <p className="text-xl my-2">
+                    {balance == null ? <span className="loading loading-dots loading-md"></span> : `${parseFloat(balance).toFixed(6)}`}
+                    <span className="text-neutral-300 ml-2">{coin.symbol}</span>
+                </p>
+                <div className="form-control mt-2">
+                    <label className="label"><span className="label-text">Your Address</span></label>
+                    <div className="join">
+                        <input type="text" readOnly value={coin.address} className="input input-bordered w-full truncate join-item" />
+                        <button onClick={() => copyToClipboard(coin.address)} className="btn join-item">Copy</button>
+                    </div>
+                </div>
+
+                <div className="divider">Send</div>
+
+                <form onSubmit={handleSend}>
+                    <div className="form-control">
+                        <label className="label"><span className="label-text">Recipient Public Address</span></label>
+                        <input type="text" placeholder="Public Address" value={recipient} onChange={(e) => setRecipient(e.target.value)} required className="input input-bordered w-full" />
+                    </div>
+                    <div className="form-control mt-2">
+                        <label className="label" ><span className="label-text">Amount</span></label>
+                        <input type="text" placeholder="0.00" value={amount} onChange={(e) => setAmount(e.target.value)} required className="input input-bordered w-full" />
+                    </div>
+                    <button type="submit" disabled={sending || !recipient || !amount} className="btn btn-primary w-full mt-4">
+                        {sending && <span className="loading loading spinner"></span>}
+                        Send {coin.symbol}
+                    </button>
+                </form>
+                {message && <div role="alert" className="alert alert-success mt-4 p-3 text-sm">{message}</div>}
+                {error && <div role="alert" className="alert alert-error mt-4 p-3 text-sm">{error}</div>}
+            </div>
+        </div >
+    );
 }
+
+export default AssetCard;

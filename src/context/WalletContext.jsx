@@ -3,7 +3,7 @@ import {createWalletFromMnemonic} from '../services/wallet';
 
 const WalletContext=createContext(null);
 
-export const WalletProvider=({Children})=>{
+export const WalletProvider=({children})=>{
     const [wallet,setWallet]=useState(null);
     const [loading,setLoading]=useState(true);
 
