@@ -13,7 +13,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-neutral-300">
       <div className="container mx-auto p-4 md:p-8">
         {loading ? <LoadingSpinner /> : wallet ? <WalletDashboard /> : <Login />}
       </div>

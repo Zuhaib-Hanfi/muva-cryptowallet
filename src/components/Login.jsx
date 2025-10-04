@@ -28,7 +28,7 @@ function login() {
 
     if (newMnemonic) {
         return (
-            <div className="max-w-md mx-auto bg-gray-300 p-8 rounded-2xl shadow-lg shadow-amber-300">
+            <div className="max-w-md mx-auto bg-gray-300 p-8 rounded-2xl shadow-lg shadow-black">
                 <h2 className="text-2xl font-bold text-center mb-4">Save your Seed Phrase</h2>
                 <div className="bg-red-200 border-l-4 border-red-400 backdrop-blur-3xl text-red-900 p-4 rounded-b-2xl mb-6">
                     <p className="font-extrabold">!!IMPORTANT!!</p>
@@ -47,7 +47,7 @@ function login() {
     return (
         <div className="max-w-lg mx-auto mt-10">
             <h1 className="text-4xl font-bold text-center mb-4">MUVA - A Super Secure Crypto Wallet</h1>
-            <div className="bg-gray-300 p-8 rounded-2xl shadow-lg shadow-amber-300 mb-6">
+            <div className="bg-gray-300 p-8 rounded-2xl shadow-lg shadow-black mb-6">
                 <h2 className="text-2xl font-semibold mb-4">Import Your Existing Wallet</h2>
                 <form onSubmit={handleImport}>
                     <textarea
@@ -64,7 +64,7 @@ function login() {
                 </form>
             </div>
 
-            <div className="bg-gray-300 p-8 rounded-2xl shadow-lg shadow-amber-300">
+            <div className="bg-gray-300 p-8 rounded-2xl shadow-lg shadow-black">
                 <h2 className="text-2xl font-semibold mb-2">Create a New Wallet</h2>
                 <p className="text-gray-400 mb-4">No Walet yet? Create one in seconds</p>
                 <button onClick={handleCreate} className="w-full btn btn-neutral">

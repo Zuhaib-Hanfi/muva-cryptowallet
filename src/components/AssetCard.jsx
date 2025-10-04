@@ -76,7 +76,7 @@ function AssetCard({ coin, balance, onTransactionSuccess }) {
 
 
     return (
-        <div className="card w-full bg-gray-300 shadow-2xl shadow-amber-300">
+        <div className="card w-full bg-gray-300 shadow-2xl shadow-black rounded-2xl p-4">
             <div className="card-body">
                 <h2 className="card-title">{coin.name} ({coin.symbol})</h2>
                 <p className="text-xl my-2">
