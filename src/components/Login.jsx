@@ -47,9 +47,9 @@ function login() {
     return (
         <div className="max-w-lg mx-auto mt-10">
             <h1 className="text-4xl font-bold text-center mb-4">MUVA - A Super Secure Crypto Wallet</h1>
-            <div className="bg-gray-300 p-8 rounded-2xl shadow-lg shadow-black mb-6">
+            <div className="bg-gray-300 p-8 rounded-2xl shadow-lg shadow-black mb-6 border-2 flex flex-col justify-center items-center backdrop-blur-2xl">
                 <h2 className="text-2xl font-semibold mb-4">Import Your Existing Wallet</h2>
-                <form onSubmit={handleImport}>
+                <form onSubmit={handleImport} className="flex items-center justify-center flex-col w-full">
                     <textarea
                         value={mnemonic}
                         onChange={(e) => setMnemonic(e.target.value)}
@@ -57,17 +57,17 @@ function login() {
                         className="w-full p-3 border border-gray-500 rounded-2xl bg-gray-400 focus:ring-2 focus:ring-orange-300 transition-all"
                         rows="3"
                     />
-                    <button type="submit" className="mt-4 w-full btn btin-primary">
+                    <button type="submit" className="mt-4 w-[50%] border-1 p-2 rounded-2xl bg-white">
                         Import Wallet
                     </button>
                     {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                 </form>
             </div>
 
-            <div className="bg-gray-300 p-8 rounded-2xl shadow-lg shadow-black">
+            <div className="bg-gray-300 p-8 rounded-2xl shadow-lg shadow-black border-2 flex flex-col items-center justify-center">
                 <h2 className="text-2xl font-semibold mb-2">Create a New Wallet</h2>
                 <p className="text-gray-400 mb-4">No Walet yet? Create one in seconds</p>
-                <button onClick={handleCreate} className="w-full btn btn-neutral">
+                <button onClick={handleCreate} className="w-[50%] bg-white border-1 p-2 rounded-2xl">
                     Create New Wallet
                 </button>
             </div>
