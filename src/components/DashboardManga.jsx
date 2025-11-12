@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Eye, EyeOff, RefreshCw, LogOut, Wallet, TrendingUp } from 'lucide-react';
 import { useWallet } from '../context/WalletContext';
 import { getEthBalance, getSolBalance, getBtcBalance } from '../services/blockchain';
+import AssetCard from './CoinsCards';
 
 function DashboardManga() {
     // Mock wallet context for demo
@@ -26,23 +27,23 @@ function DashboardManga() {
     // }, [wallet]);
 
     const fetchBalances = useCallback(async () => {
-            if (!wallet || !wallet.ethereum || !wallet.bitcoin || !wallet.solana) return;
-    
-            try {
-                console.log("Refreshing Balances...");
-                const [eth, sol, btc] = await Promise.all([
-                    getEthBalance(wallet.ethereum.address),
-                    getSolBalance(wallet.solana.address),
-                    getBtcBalance(wallet.bitcoin.address)
-                ]);
-                setBalance({ eth, sol, btc });
-                const totalUSDBalance=eth+sol+btc;
-                setTotalUSD(totalUSDBalance);
-            }
-            catch (error) {
-                console.error("Failed to fetch all balances: ", error);
-            }
-        }, [wallet]);
+        if (!wallet || !wallet.ethereum || !wallet.bitcoin || !wallet.solana) return;
+
+        try {
+            console.log("Refreshing Balances...");
+            const [eth, sol, btc] = await Promise.all([
+                getEthBalance(wallet.ethereum.address),
+                getSolBalance(wallet.solana.address),
+                getBtcBalance(wallet.bitcoin.address)
+            ]);
+            setBalance({ eth, sol, btc });
+            const totalUSDBalance = eth + sol + btc;
+            setTotalUSD(totalUSDBalance);
+        }
+        catch (error) {
+            console.error("Failed to fetch all balances: ", error);
+        }
+    }, [wallet]);
 
     useEffect(() => {
         fetchBalances();
@@ -125,14 +126,14 @@ function DashboardManga() {
                     <div className='absolute -top-3 md:-top-4 left-4 md:left-8 bg-white px-2 md:px-4 border-2 md:border-4 border-black'>
                         <p className='text-xs md:text-sm font-black uppercase'>⚠ Secret Recovery Phrase</p>
                     </div>
-                    <div className='flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-4 md:mt-2'>
+                    <div className='flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mt-4 md:mt-2'>
                         <div className='flex-1'>
                             <p className='font-black mb-2 text-base md:text-lg uppercase'>Keep This Secret!</p>
                             <div className='font-mono text-xs md:text-sm font-bold break-words bg-black text-white p-3 border-2 md:border-4 border-black overflow-hidden'>
-                                {showMnemonic ? wallet.mnemonic : '••••••••••••••••••••••••••••••••••••'}
+                                {showMnemonic ? wallet.mnemonic : '•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*•*'}
                             </div>
                         </div>
-                        <button 
+                        <button
                             onClick={() => setShowMnemonic(!showMnemonic)}
                             className='bg-black text-white p-3 border-2 md:border-4 border-black hover:bg-white hover:text-black transition-all self-start sm:self-auto sm:ml-4'
                         >
@@ -147,7 +148,17 @@ function DashboardManga() {
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                    {coins.map((coin, index) => (
+
+                    {coins.map(coin => (
+                        <AssetCard
+                            key={coin.symbol}
+                            coin={coin}
+                            balance={balances[coin.symbol.toLowerCase()]}
+                            onTransactionSuccess={fetchBalances}
+                        />
+                    ))}
+
+                    {/* {coins.map((coin, index) => (
                         <div
                             key={coin.symbol}
                             className='bg-white border-8 border-black p-6 relative shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all'
@@ -181,7 +192,7 @@ function DashboardManga() {
                                 </button>
                             </div>
                         </div>
-                    ))}
+                    ))} */}
                 </div>
 
                 {/* Footer Badge */}

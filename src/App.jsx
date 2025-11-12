@@ -17,18 +17,26 @@ function App() {
 
     <div className="min-h-screen relative">
       {/* <div className="min-h-screen w-full bg-white relative"> */}
-        {/*  Diagonal Cross Grid Background */}
-        <div
-          className="absolute inset-0 z-[-10]"
-          style={{
-            backgroundImage: `
+      {/*  Diagonal Cross Grid Background */}
+      <div
+        className="absolute inset-0 z-[-10]"
+        style={{
+          backgroundImage: `
         linear-gradient(45deg, transparent 49%, #e5e7eb 49%, #e5e7eb 51%, transparent 51%),
         linear-gradient(-45deg, transparent 49%, #e5e7eb 49%, #e5e7eb 51%, transparent 51%)
       `,
-            backgroundSize: "40px 40px",
-          }}
-        />
-        {/* Your Content/Components */}
+          backgroundSize: "40px 40px",
+        }}
+      />
+ {/* <div
+    className="absolute inset-0"
+    style={{
+      background: 'linear-gradient(180deg, #5a7d6e 0%, #4a6b5c 50%, #527061 100%)',
+    }}
+  /> */}
+  
+ 
+      {/* Your Content/Components */}
       {/* </div> */}
       <div className="container mx-auto p-4 md:p-8">
         {loading ? <LoadingSpinner /> : wallet ? <DashboardManga /> : <LoginNew />}
