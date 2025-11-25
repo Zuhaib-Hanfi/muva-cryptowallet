@@ -167,7 +167,7 @@ function LandingPage() {
                             <p className='text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-relaxed max-w-2xl'>
                                 Manage <span className='bg-black text-white px-2 py-1 border-2 border-black'>Ethereum</span>,{' '}
                                 <span className='bg-black text-white px-2 py-1 border-2 border-black'>Solana</span>, and{' '}
-                                <span className='bg-black text-white px-2 py-1 border-2 border-black'>Bitcoin</span> in one stunning manga-styled wallet.
+                                <span className='bg-black text-white px-2 py-1 border-2 border-black'>Bitcoin</span> in one stunning wallet.
                             </p>
 
                             <div className='flex flex-col sm:flex-row gap-4'>
@@ -178,11 +178,11 @@ function LandingPage() {
                                     Launch App
                                     <Rocket className='w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform' />
                                 </Link>
-                                <button className='group bg-white text-black px-6 md:px-8 py-4 md:py-5 font-black text-base md:text-lg uppercase border-4 border-black hover:bg-black hover:text-white transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center justify-center gap-2'>
+                                <a href='https://github.com/Zuhaib-Hanfi/muva-cryptowallet' target='_blank' className='group bg-white text-black px-6 md:px-8 py-4 md:py-5 font-black text-base md:text-lg uppercase border-4 border-black hover:bg-black hover:text-white transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center justify-center gap-2'>
                                     <Github className='w-4 h-4 md:w-5 md:h-5' />
                                     GitHub
                                     <ExternalLink className='w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform' />
-                                </button>
+                                </a>
                             </div>
 
                             <div className='flex flex-wrap gap-4 pt-4'>
@@ -563,7 +563,7 @@ function LandingPage() {
             </section>
 
             {/* Beta Program / Waitlist */}
-            <section id='beta' className='py-16 md:py-24 lg:py-32 px-4' data-animate>
+            {/* <section id='beta' className='py-16 md:py-24 lg:py-32 px-4' data-animate>
                 <div className='max-w-4xl mx-auto'>
                     <div className='text-center mb-12 md:mb-16'>
                         <div className='inline-block bg-black text-white px-4 py-2 font-black text-xs md:text-sm uppercase mb-6 border-3 border-black'>
@@ -618,7 +618,7 @@ function LandingPage() {
                         By joining, you agree to test MUVA and provide feedback. No spam, ever.
                     </p>
                 </div>
-            </section>
+            </section> */}
 
             {/* Footer */}
             <footer className='bg-white py-12 md:py-16 lg:py-20 px-4 border-t-4 md:border-t-8 border-black'>
@@ -657,15 +657,23 @@ function LandingPage() {
                         <div>
                             <h4 className='font-black uppercase mb-4 md:mb-6 text-base md:text-lg'>Connect</h4>
                             <div className='flex gap-3 md:gap-4'>
-                                {[Twitter, Github].map((Icon, i) => (
+                               
                                     <a
-                                        key={i}
-                                        href='#'
+                                        target='_blank'
+                                        href='https://x.com/ZuhaibHanfi'
                                         className='bg-black text-white p-2 md:p-3 border-2 md:border-3 border-black hover:bg-white hover:text-black transition-all hover:scale-110'
                                     >
-                                        <Icon className='w-5 h-5 md:w-6 md:h-6' />
+                                        <Twitter className='w-5 h-5 md:w-6 md:h-6' />
                                     </a>
-                                ))}
+
+                                    <a
+                                        target='_blank'
+                                        href='https://github.com/Zuhaib-Hanfi'
+                                        className='bg-black text-white p-2 md:p-3 border-2 md:border-3 border-black hover:bg-white hover:text-black transition-all hover:scale-110'
+                                    >
+                                        <Github className='w-5 h-5 md:w-6 md:h-6' />
+                                    </a>
+                               
                             </div>
                         </div>
                     </div>
@@ -673,7 +681,7 @@ function LandingPage() {
                     <div className='border-t-4 border-black pt-8 md:pt-12'>
                         <div className='flex flex-col sm:flex-row justify-between items-center gap-4'>
                             <p className='font-bold text-xs md:text-sm text-center sm:text-left'>
-                                © 2024 MUVA Wallet. Open Source • Non-Custodial • Secure
+                                © 2025 MUVA Wallet. Open Source • Non-Custodial • Secure
                             </p>
                             <div className='flex gap-4 md:gap-6 font-bold text-xs md:text-sm'>
                                 <a href='#' className='hover:underline'>Privacy</a>
