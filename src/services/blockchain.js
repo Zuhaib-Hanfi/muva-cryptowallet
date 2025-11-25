@@ -10,7 +10,7 @@ const ECPair = ECPairFactory(ecc);
 // V IMPORTANT: REPLACE WITH YOUR ACTUAL GETBLOCK API KEY
 const ETH_RPC_URL = 'https://go.getblock.us/81990708e37a492c89af1f1b7a82cb9a';
 export const SOL_RPC_URL = 'https://go.getblock.us/bbcb5a2482ba4a86a3d1e633fcdb36fe';
-
+const BTC_RPC_URL= 'https://go.getblock.io/6e36ac58a9c74879a6e5b94725be992f';
 // --- Balance Fetching ---
 export async function getEthBalance(address) {
   const provider = new ethers.JsonRpcProvider(ETH_RPC_URL);
