@@ -5,7 +5,7 @@ import App from './App.jsx'
 import { WalletProvider } from './context/WalletContext.jsx'
 import LandingPage from './landingPage.jsx'
 import { BrowserRouter, Routes, Route } from "react-router"
-import { Analytics } from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/react'
 
 
 
