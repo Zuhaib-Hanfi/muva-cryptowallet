@@ -60,7 +60,7 @@ function DashboardManga() {
 
     useEffect(() => {
         fetchBalances();
-        const interval = setInterval(fetchBalances, 3000);
+        const interval = setInterval(fetchBalances, 20000);
         return () => clearInterval(interval);
     }, [fetchBalances]);
 
