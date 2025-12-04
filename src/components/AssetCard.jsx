@@ -41,7 +41,7 @@ function AssetCard({ coin, balance, onTransactionSuccess }) {
         }
     };
 
-    const pollForSolanaCOnfirmation = async (signature) => {
+    const pollForSolanaConfirmation = async (signature) => {
         const solscanLink = `https://solscan.io/tx/${signature}`;
         const connection = new Connection(blockchain.SOL_RPC_URL);
         let confirmed = false;

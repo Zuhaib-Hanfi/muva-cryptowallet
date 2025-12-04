@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useWallet } from "../context/WalletContext";
 import { generateMnemonic } from "../services/wallet";
+import { Link } from "react-router";
 
 function LoginNew() {
     const [mnemonic, setMnemonic] = useState('');
@@ -74,9 +75,9 @@ function LoginNew() {
         <div className="min-h-screen bg-transparent p-4">
             <div className="max-w-2xl mx-auto pt-10">
                 <h1 className="text-6xl font-black text-center mb-12 uppercase tracking-tighter leading-none">
-                    <span className="inline-block border-8 border-black bg-black text-white px-6 py-4 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                    <Link to={'/'} className="inline-block border-8 border-black bg-black text-white px-6 py-4 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
                         MUVA
-                    </span>
+                    </Link>
                     <div className="text-2xl mt-4 font-bold">A Super Secure Crypto Wallet</div>
                 </h1>
 

@@ -34,11 +34,24 @@ function DashboardManga() {
             const [eth, sol, btc] = await Promise.all([
                 getEthBalance(wallet.ethereum.address),
                 getSolBalance(wallet.solana.address),
-                getBtcBalance(wallet.bitcoin.address)
+                // getBtcBalance(wallet.bitcoin.address)
             ]);
-            setBalance({ eth, sol, btc });
-            const totalUSDBalance = eth + sol + btc;
-            setTotalUSD(totalUSDBalance);
+            // setBalance({ eth, sol, btc });
+            // const totalUSDBalance = eth + sol + btc;
+            // setTotalUSD(totalUSDBalance);
+            const ethNum = Number(eth);
+            const solNum = Number(sol);
+            const btcNum = 0;
+
+            setBalance({
+                eth: ethNum.toFixed(6),
+                sol: solNum.toFixed(6),
+                btc: 0
+            });
+
+            const totalUSDBalance = ethNum + solNum + btcNum;
+            setTotalUSD(totalUSDBalance.toFixed(6));
+
         }
         catch (error) {
             console.error("Failed to fetch all balances: ", error);
@@ -106,10 +119,10 @@ function DashboardManga() {
                     </div>
                     <div className='flex justify-between items-end mt-4'>
                         <div>
-                            <p className='text-6xl font-black mb-2'>${totalUSD}</p>
+                            <p className='text-6xl font-black mb-2'>{totalUSD}</p>
                             <div className='flex items-center gap-2 bg-white text-black px-3 py-1 w-fit font-black text-sm'>
                                 <TrendingUp className='w-4 h-4' />
-                                <span>+0.5% TODAY</span>
+                                <span>USD Comming soon</span>
                             </div>
                         </div>
                         <button

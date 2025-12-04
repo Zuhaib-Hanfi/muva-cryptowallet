@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useWallet } from "../context/WalletContext";
 import { generateMnemonic } from "../services/wallet";
+import { Link } from "react-router";
 
 function login() {
     const [mnemonic, setMnemonic] = useState('');
